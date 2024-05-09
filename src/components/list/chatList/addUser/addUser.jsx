@@ -4,7 +4,6 @@ import {
   arrayUnion,
   collection,
   doc,
-  getDoc,
   getDocs,
   query,
   serverTimestamp,
@@ -19,6 +18,8 @@ const AddUser = () => {
   const [user, setUser] = useState(null);
 
   const { currentUser } = useUserStore();
+
+  const { resetChat } = useUserStore();
 
   const handleSearch = async (e) => {
     e.preventDefault();

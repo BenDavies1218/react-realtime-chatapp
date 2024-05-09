@@ -42,31 +42,35 @@ const Detail = () => {
         <h2>{user?.username}</h2>
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
-      <div className="info">
-        <div className="option">
-          <div className="title">
-            <span>Chat Settings</span>
-            <img src="./arrowUp.png" alt="" />
+      <div className="dropdownMenu">
+        <div className="info">
+          <div className="option">
+            <div className="title">
+              <span>Chat Settings</span>
+              <img src="./arrowUp.png" alt="" />
+            </div>
+          </div>
+          <div className="option">
+            <div className="title">
+              <span>Privacy & help</span>
+              <img src="./arrowUp.png" alt="" />
+            </div>
+          </div>
+          <div className="option">
+            <div className="title">
+              <span>Shared photos</span>
+              <img src="./arrowUp.png" alt="" />
+            </div>
+          </div>
+          <div className="option">
+            <div className="title">
+              <span>Shared Files</span>
+              <img src="./arrowUp.png" alt="" />
+            </div>
           </div>
         </div>
-        <div className="option">
-          <div className="title">
-            <span>Privacy & help</span>
-            <img src="./arrowUp.png" alt="" />
-          </div>
-        </div>
-        <div className="option">
-          <div className="title">
-            <span>Shared photos</span>
-            <img src="./arrowUp.png" alt="" />
-          </div>
-        </div>
-        <div className="option">
-          <div className="title">
-            <span>Shared Files</span>
-            <img src="./arrowUp.png" alt="" />
-          </div>
-        </div>
+      </div>
+      <div className="buttons">
         <button onClick={handleBlock}>
           {isCurrentUserBlocked
             ? "You are Blocked!"

@@ -1,30 +1,52 @@
 .userInfo {
+  position: relative;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
-  .user {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.userInfo .user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-  }
+.userInfo .user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  .icons {
-    display: flex;
-    gap: 20px;
+.userInfo .icons {
+  position: relative;
+  display: flex;
+  gap: 20px;
+}
 
-    img {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
-  }
+.userInfo .icons img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.userInfo .icons .dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(17, 25, 40, 0.781);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.userInfo .icons .item {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.userInfo .icons .item:hover {
+  text-decoration: underline;
 }
