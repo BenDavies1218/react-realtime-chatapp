@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAOK9RTGfMbyjPJ0NGYfny23zosKl-PngA",
+  apiKey: process.env.VITE_API_KEY,
   authDomain: "instachat-ea00a.firebaseapp.com",
   projectId: "instachat-ea00a",
   storageBucket: "instachat-ea00a.appspot.com",
