@@ -4,13 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.VITE_API_KEY,
-  authDomain: "instachat-ea00a.firebaseapp.com",
-  projectId: "instachat-ea00a",
-  storageBucket: "instachat-ea00a.appspot.com",
-  messagingSenderId: "703510367332",
-  appId: "1:703510367332:web:a6a2e4afb9e9480b84a371",
-  measurementId: "G-BJ7F9FEHLT",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
