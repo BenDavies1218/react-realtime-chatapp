@@ -7,7 +7,8 @@
 }
 
 body {
-  background-image: url("/bg.jpg");
+  background-image: url("/background2.jpg");
+  background-size: 100vw 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,13 +20,13 @@ body {
   width: 80vw;
   height: 90vh;
   background-color: rgba(17, 25, 40, 0.75);
-  backdrop-filter: blur(19px) saturate(180%);
+  backdrop-filter: blur(8px) saturate(180%);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   display: flex;
 }
 
-.loading{
+.loading {
   padding: 50px;
   font-size: 36px;
   border-radius: 10px;
@@ -52,7 +53,7 @@ body {
 
 *::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: #4D4D4D;
+  background-color: #4d4d4d;
 }
 
 *::-webkit-scrollbar-thumb:hover {
@@ -61,5 +62,5 @@ body {
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background-color: #4D4D4D;
+  background-color: #4d4d4d;
 }
