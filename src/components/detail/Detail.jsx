@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { useChatStore } from "../../lib/chatStore";
 import { auth, db } from "../../lib/firebase";
@@ -15,6 +16,13 @@ const Detail = () => {
   } = useChatStore();
   const { currentUser } = useUserStore();
 
+  const [dropdownStates, setDropdownStates] = useState({
+    chatSettings: false,
+    privacyHelp: false,
+    sharedPhotos: false,
+    sharedFiles: false,
+  });
+
   const handleBlock = async () => {
     if (!user) return;
 
@@ -28,6 +36,13 @@ const Detail = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleClick = (option) => {
+    setDropdownStates((prevState) => ({
+      ...prevState,
+      [option]: !prevState[option],
+    }));
   };
 
   const handleLogout = () => {
@@ -47,26 +62,82 @@ const Detail = () => {
           <div className="option">
             <div className="title">
               <span>Chat Settings</span>
-              <img src="./arrowUp.png" alt="" />
+              <img
+                src={
+                  dropdownStates.chatSettings
+                    ? "./arrowDown.png"
+                    : "./arrowUp.png"
+                }
+                alt=""
+                onClick={() => handleClick("chatSettings")}
+                style={{ cursor: "pointer" }}
+              />
             </div>
+            {dropdownStates.chatSettings && (
+              <div className="dropdownContent">
+                <p>dropdown menu</p>
+              </div>
+            )}
           </div>
           <div className="option">
             <div className="title">
               <span>Privacy & help</span>
-              <img src="./arrowUp.png" alt="" />
+              <img
+                src={
+                  dropdownStates.privacyHelp
+                    ? "./arrowDown.png"
+                    : "./arrowUp.png"
+                }
+                alt=""
+                onClick={() => handleClick("privacyHelp")}
+                style={{ cursor: "pointer" }}
+              />
             </div>
+            {dropdownStates.privacyHelp && (
+              <div className="dropdownContent">
+                <p>dropdown menu</p>
+              </div>
+            )}
           </div>
           <div className="option">
             <div className="title">
               <span>Shared photos</span>
-              <img src="./arrowUp.png" alt="" />
+              <img
+                src={
+                  dropdownStates.sharedPhotos
+                    ? "./arrowDown.png"
+                    : "./arrowUp.png"
+                }
+                alt=""
+                onClick={() => handleClick("sharedPhotos")}
+                style={{ cursor: "pointer" }}
+              />
             </div>
+            {dropdownStates.sharedPhotos && (
+              <div className="dropdownContent">
+                <p>dropdown menu</p>
+              </div>
+            )}
           </div>
           <div className="option">
             <div className="title">
               <span>Shared Files</span>
-              <img src="./arrowUp.png" alt="" />
+              <img
+                src={
+                  dropdownStates.sharedFiles
+                    ? "./arrowDown.png"
+                    : "./arrowUp.png"
+                }
+                alt=""
+                onClick={() => handleClick("sharedFiles")}
+                style={{ cursor: "pointer" }}
+              />
             </div>
+            {dropdownStates.sharedFiles && (
+              <div className="dropdownContent">
+                <p>dropdown menu</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

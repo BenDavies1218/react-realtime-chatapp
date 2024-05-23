@@ -1,6 +1,35 @@
 .chatList {
   flex: 1;
   overflow: scroll;
+
+  .user{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .detail{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    button{
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
   .search {
     display: flex;
     align-items: center;

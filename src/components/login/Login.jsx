@@ -44,14 +44,13 @@ const Login = () => {
     // VALIDATE INPUTS
     if (!username || !email || !password)
       return toast.warn("Please enter inputs!");
-    if (!avatar.file) return toast.warn("Please upload an avatar!");
 
     // VALIDATE UNIQUE USERNAME
     const usersRef = collection(db, "users");
     const q = query(usersRef, where("username", "==", username));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
-      return toast.warn("Select another username");
+      return toast.warn("Username taken please try again");
     }
 
     try {
@@ -89,6 +88,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      window.location.reload();
     } catch (err) {
       console.log(err);
       toast.error(err.message);

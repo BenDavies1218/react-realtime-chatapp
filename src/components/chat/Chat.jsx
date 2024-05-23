@@ -15,6 +15,7 @@ import upload from "../../lib/upload";
 import { format } from "timeago.js";
 
 const Chat = () => {
+  const dropdownRef = useRef(null);
   const [chat, setChat] = useState({ messages: [] });
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -22,6 +23,19 @@ const Chat = () => {
     file: null,
     url: "",
   });
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const { currentUser } = useUserStore();
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
@@ -122,8 +136,6 @@ const Chat = () => {
           </div>
         </div>
         <div className="icons">
-          <img src="./phone.png" alt="" />
-          <img src="./video.png" alt="" />
           <img src="./info.png" alt="" />
         </div>
       </div>
@@ -162,8 +174,6 @@ const Chat = () => {
             style={{ display: "none" }}
             onChange={handleImg}
           />
-          <img src="./camera.png" alt="" />
-          <img src="./mic.png" alt="" />
         </div>
         <input
           type="text"
@@ -176,7 +186,7 @@ const Chat = () => {
           onChange={(e) => setText(e.target.value)}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         />
-        <div className="emoji">
+        <div ref={dropdownRef} className="emoji">
           <img
             src="./emoji.png"
             alt=""

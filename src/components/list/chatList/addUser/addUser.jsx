@@ -27,10 +27,13 @@ const AddUser = () => {
     const username = formData.get("username");
 
     try {
+      // parsing the collection that we need for the query to
       const userRef = collection(db, "users");
 
+      // username search with lower
       const q = query(userRef, where("username", "==", username));
 
+      // returns our query from firebase
       const querySnapShot = await getDocs(q);
 
       if (!querySnapShot.empty) {
