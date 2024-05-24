@@ -1,8 +1,10 @@
+// Import firebase
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
+// Set the Enviroment Keys
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
@@ -13,8 +15,10 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
+// Declare the App
 const app = initializeApp(firebaseConfig);
 
+// Export so we can access in Components
 export const auth = getAuth();
 export const db = getFirestore();
 export const storage = getStorage();

@@ -1,6 +1,7 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "./firebase";
 
+// Image Uploading to Firebase
 const upload = async (file) => {
   const date = new Date();
   const storageRef = ref(storage, `images/${date + file.name}`);

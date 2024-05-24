@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { useUserStore } from "./userStore";
 
+// Chat Logic we have to track the user and if either user is blocked by one another
 export const useChatStore = create((set) => ({
   chatId: null,
   user: null,
@@ -37,9 +38,12 @@ export const useChatStore = create((set) => ({
     }
   },
 
+  // Function to change the state of blocked users
   changeBlock: () => {
     set((state) => ({ ...state, isReceiverBlocked: !state.isReceiverBlocked }));
   },
+
+  // Function to reset the chats
   resetChat: () => {
     set({
       chatId: null,
