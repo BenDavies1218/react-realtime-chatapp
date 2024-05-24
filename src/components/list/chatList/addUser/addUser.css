@@ -10,6 +10,11 @@
   left: 0;
   right: 0;
   margin: auto;
+  text-align: center;
+
+  h4 {
+    margin-bottom: 20px;
+  }
 
   form{
     display: flex;
@@ -31,7 +36,7 @@
       cursor: pointer;
     }
   }
-
+  
   .user{
     margin-top: 50px;
     display: flex;
@@ -60,4 +65,6 @@
       cursor: pointer;
     }
   }
+  
+  
 }

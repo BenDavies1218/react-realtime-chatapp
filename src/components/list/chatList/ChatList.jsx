@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./chatList.css";
 import AddUser from "./addUser/addUser";
 import { useUserStore } from "../../../lib/userStore";
@@ -17,31 +17,18 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import { useChatStore } from "../../../lib/chatStore";
+import { Context } from "../../../context/searchContext";
 
 const ChatList = () => {
   const [adminAdded, setAdminAdded] = useState(false);
   const [chats, setChats] = useState([]);
-  const [addMode, setAddMode] = useState(false);
+  const [addMode, setAddMode] = useContext(Context);
   const [input, setInput] = useState("");
   const [adminUser, setAdminUser] = useState(null);
   const [showChats, setShowChats] = useState(false);
 
   const { currentUser } = useUserStore();
   const { chatId, changeChat } = useChatStore();
-  const dropdownRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setAddMode(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   useEffect(() => {
     const fetchAdminUser = async () => {
@@ -209,7 +196,6 @@ const ChatList = () => {
           src={addMode ? "./minus.png" : "./plus.png"}
           alt=""
           className="add"
-          ref={dropdownRef}
           onClick={() => {
             setAddMode((prev) => !prev);
           }}

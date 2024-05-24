@@ -11,15 +11,34 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { useUserStore } from "../../../../lib/userStore";
+import { Context } from "../../../../context/searchContext";
 
 const AddUser = () => {
+  // displaying the users is the are any
   const [user, setUser] = useState(null);
+
+  // opening and closing the search form
+  const [addMode, setAddMode] = useContext(Context);
+  const searchRef = useRef(null);
 
   const { currentUser } = useUserStore();
 
   const { resetChat } = useUserStore();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setAddMode(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -87,7 +106,8 @@ const AddUser = () => {
   };
 
   return (
-    <div className="addUser">
+    <div className="addUser" ref={searchRef}>
+      <h4>Search</h4>
       <form onSubmit={handleSearch}>
         <input type="text" placeholder="Username" name="username" />
         <button>Search</button>
