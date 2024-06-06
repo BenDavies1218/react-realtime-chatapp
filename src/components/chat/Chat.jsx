@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./chat.css";
 import EmojiPicker from "emoji-picker-react";
 import {
@@ -125,6 +125,12 @@ const Chat = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
+
   return (
     <div className="chat">
       <div className="top">
@@ -145,7 +151,7 @@ const Chat = () => {
             className={
               message.senderId === currentUser?.id ? "message own" : "message"
             }
-            key={message?.createAt}
+            key={message?.createdAt}
           >
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
@@ -184,6 +190,7 @@ const Chat = () => {
           }
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyUp={handleKeyPress}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         />
         <div ref={dropdownRef} className="emoji">

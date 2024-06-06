@@ -8,7 +8,30 @@ const Userinfo = () => {
   const [openSettings, setOpenSettings] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const { currentUser } = useUserStore();
+  const [openBackground, setOpenBackground] = useState(false);
   const dropdownRef = useRef(null);
+  const closeBackgroundMenuRef = useRef(null);
+
+  const BackgroundArray = [
+    "./background1.jpg",
+    "./background2.jpg",
+    "./background3.jpg",
+    "./background4.jpg",
+    "./background6.jpg",
+    "./background7.jpg",
+    "./background8.jpg",
+    "./background9.jpg",
+  ];
+
+  const handleBackground = () => {
+    setOpenBackground(!openBackground);
+  };
+
+  function setBackground(img) {
+    const body = document.getElementsByTagName("body")[0];
+    console.log("button clicked");
+    body.style.backgroundImage = `url('${img}')`;
+  }
 
   const handleLogout = () => {
     auth.signOut();
@@ -92,6 +115,26 @@ const Userinfo = () => {
               <h5>Close</h5>
             </div>
             <h1>Settings Component</h1>
+            <button onClick={handleBackground}>change Background</button>
+            {openBackground && (
+              <div className="container">
+                <div className="close" onClick={() => setOpenBackground(false)}>
+                  <img src="./plus.png" alt="" />
+                  <h5>Close</h5>
+                </div>
+                <h3>Backgrounds</h3>
+                <div className="image-container">
+                  {BackgroundArray.map((img, index) => (
+                    <div
+                      key={index}
+                      className="background-imgs"
+                      style={{ backgroundImage: `url(${img})` }}
+                      onClick={() => setBackground(img)}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </>
       )}

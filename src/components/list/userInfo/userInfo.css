@@ -57,6 +57,60 @@
   margin: 20px;
   background-color: rgba(17, 25, 40, 0.5);
   border-radius: 10px;
+  position: relative;
+
+  .container {
+    top: -100px;
+    left: 70%;
+    display: block;
+    position: absolute;
+    width: 50vw;
+    margin-left: 5%;
+    height: 550px;
+    z-index: 1;
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row;
+      gap: 5px;
+      padding: 10px;
+      cursor: pointer;
+    
+      img {
+        margin-bottom: 1px;
+    
+        width: 15px;
+        height: 15px;
+        transform: rotate(45deg);
+      }
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    .image-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+
+      .background-imgs {
+        background-position: center;
+        background-size: cover;
+        width: 150px;
+        height: 150px;
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid white;
+        }
+      }
+    }
+    
+  }
   
   .close {
     display: flex;

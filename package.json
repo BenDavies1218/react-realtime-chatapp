@@ -13,6 +13,7 @@
     "dotenv": "^16.4.5",
     "emoji-picker-react": "^4.9.2",
     "firebase": "^10.10.0",
+    "module": "^1.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-toastify": "^10.0.5",

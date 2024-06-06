@@ -56,12 +56,12 @@ const Login = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      const imgUrl = await upload(avatar.file);
+      const imgUrl = await upload(avatar.file || "./avatar.png");
 
       await setDoc(doc(db, "users", res.user.uid), {
         username,
         email,
-        avatar: imgUrl,
+        avatar: imgUrl || "./avatar.png",
         id: res.user.uid,
         blocked: [],
       });
@@ -102,7 +102,7 @@ const Login = () => {
       {login ? (
         <div className="login">
           <div className="item">
-            <h2>Welcome back</h2>
+            <h2>Welcome to InstaChat</h2>
             <form onSubmit={handleLogin}>
               <input type="text" placeholder="Email" name="email" />
               <input type="password" placeholder="Password" name="password" />
@@ -121,6 +121,12 @@ const Login = () => {
       ) : (
         <div className="login">
           <div className="item">
+            <h4>
+              Please{" "}
+              <strong style={{ textDecoration: "underline" }}>DO NOT!</strong>{" "}
+              use real credentials, this isn't a production application. Use a
+              fake email and password and don't upload a photo
+            </h4>
             <h2>Create an Account</h2>
             <form onSubmit={handleRegister}>
               <label htmlFor="file">

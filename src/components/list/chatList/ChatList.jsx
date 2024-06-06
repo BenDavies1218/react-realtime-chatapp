@@ -36,7 +36,7 @@ const ChatList = () => {
         const userRefAdmin = collection(db, "users");
         const adminQuery = query(
           userRefAdmin,
-          where("username", "==", "InstaChat Developer")
+          where("username", "==", "Developer")
         );
         const querySnapShotAdmin = await getDocs(adminQuery);
         if (!querySnapShotAdmin.empty) {
