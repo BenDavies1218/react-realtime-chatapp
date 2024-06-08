@@ -36,7 +36,7 @@ const ChatList = () => {
         const userRefAdmin = collection(db, "users");
         const adminQuery = query(
           userRefAdmin,
-          where("username", "==", "Developer")
+          where("username", "==", "InstaChat")
         );
         const querySnapShotAdmin = await getDocs(adminQuery);
         if (!querySnapShotAdmin.empty) {
@@ -113,6 +113,7 @@ const ChatList = () => {
   const handleAdd = async () => {
     const chatRef = collection(db, "chats");
     const userChatsRef = collection(db, "userchats");
+    setShowChats(true);
 
     try {
       const newChatRef = doc(chatRef);
@@ -232,13 +233,11 @@ const ChatList = () => {
       ) : adminUser && !adminAdded ? (
         <div className="user">
           <div className="detail">
-            <img src={adminUser.avatar || "./avatar.png"} alt="" />
+            <img src={"./favicon.svg"} alt="" />
             <span>{adminUser.username}</span>
           </div>
           <button onClick={handleAdd}>Add User</button>
-          <h5>
-            Add the developer of InstaChat to check out the app's features!
-          </h5>
+          <h5>Add InstaChat to check out the app's features!</h5>
         </div>
       ) : (
         <p>No chats found.</p>

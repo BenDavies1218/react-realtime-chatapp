@@ -4,6 +4,62 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .container-background {
+    background-color: rgba(17, 25, 40, 0.781);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    top: 30%;
+    left: 70%;
+    display: block;
+    position: absolute;
+    width: 50vw;
+    margin-left: 5%;
+    height: 550px;
+    z-index: 1;
+    transition: opacity 0.3s ease-in-out;
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row;
+      gap: 5px;
+      padding: 10px;
+      cursor: pointer;
+    
+      img {
+        margin-bottom: 1px;
+    
+        width: 15px;
+        height: 15px;
+        transform: rotate(45deg);
+      }
+    }   
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .image-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+
+    .background-imgs {
+      background-position: center;
+      background-size: cover;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid white;
+      }
+    }
+  }
 }
 
 .userInfo .user {
@@ -85,31 +141,7 @@
         height: 15px;
         transform: rotate(45deg);
       }
-    }
-
-    h3 {
-      text-align: center;
-    }
-
-    .image-container {
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: wrap;
-
-      .background-imgs {
-        background-position: center;
-        background-size: cover;
-        width: 150px;
-        height: 150px;
-        cursor: pointer;
-
-        &:hover {
-          border: 1px solid white;
-        }
-      }
-    }
-    
+    }   
   }
   
   .close {

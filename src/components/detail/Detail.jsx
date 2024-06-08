@@ -55,7 +55,7 @@ const Detail = () => {
       <div className="user">
         <img src={user?.avatar || "./avatar.png"} alt="" />
         <h2>{user?.username}</h2>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Mutual Friends: 0</p>
       </div>
       <div className="dropdownMenu">
         <div className="info">
@@ -146,7 +146,7 @@ const Detail = () => {
           {isCurrentUserBlocked
             ? "You are Blocked!"
             : isReceiverBlocked
-            ? "User blocked"
+            ? "Unblock User"
             : "Block User"}
         </button>
         <button className="logout" onClick={handleLogout}>

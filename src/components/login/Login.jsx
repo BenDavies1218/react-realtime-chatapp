@@ -125,7 +125,8 @@ const Login = () => {
               Please{" "}
               <strong style={{ textDecoration: "underline" }}>DO NOT!</strong>{" "}
               use real credentials, this isn't a production application. Use a
-              fake email and password and don't upload a photo
+              fake email and password and don't upload a profile picture. All
+              accounts are deleted after 24 hours for security reasons.
             </h4>
             <h2>Create an Account</h2>
             <form onSubmit={handleRegister}>
